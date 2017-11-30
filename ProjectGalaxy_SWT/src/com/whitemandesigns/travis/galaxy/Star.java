@@ -61,7 +61,7 @@ public class Star {
 		
 		//Name planets
 		for (Planet planet : planets) {
-			planet.setName(count++);
+			planet.setName(count++, this);
 		}
 	}
 	
@@ -97,6 +97,10 @@ public class Star {
 		System.out.print("Z=" + z + " ");
 		System.out.print("TYPE: ");
 		System.out.println(lookupType(size));
+		
+		for (Planet planet : planets) {
+			planet.printAll();
+		}
 	}
 	
 	private String lookupType(int size) {
@@ -111,6 +115,13 @@ public class Star {
 		case Star.SUPER_GIANT: return "Super Giant";
 		}
 		return "Hello";
+	}
+
+	/**
+	 * @return
+	 */
+	public String getName() {
+		return null;
 	}
 }
 	
