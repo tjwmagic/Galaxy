@@ -4,6 +4,7 @@
 package com.whitemandesigns.travis.galaxy;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 import com.ibm.icu.text.DecimalFormat;
@@ -35,12 +36,33 @@ public class Star {
 	public Star(int n) {
 		DecimalFormat df = new DecimalFormat("0000");
 		name = "S" + df.format(n);
-		
+		int count = 0;
 		size = generateSize();
 		
 		x = dice.nextInt(201) - 100;
 		y = dice.nextInt(201) - 100;
 		z = dice.nextInt(21) - 10;
+		
+		//Planet Generation
+		int numberplanets = dice.nextInt(11);
+		
+		if (size == Star.BLACK_HOLE) {
+			numberplanets = 0;
+		}
+		
+		//Create Planets		
+		for (int i = 1; i <= numberplanets; i++) {
+			Planet planet = new Planet(size);
+			planets.add(planet);
+		}
+		
+		//Organized by distance
+		Collections.sort(planets);
+		
+		//Name planets
+		for (Planet planet : planets) {
+			planet.setName(count++);
+		}
 	}
 	
 	private int generateSize() {
