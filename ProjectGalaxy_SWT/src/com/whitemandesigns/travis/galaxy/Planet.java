@@ -83,4 +83,8 @@ public class Planet implements Comparable<Planet>{
 		System.out.print("HABIT=" + habit + " ");
 		System.out.println("MINERAL=" + mineral);
 	}
+	
+	public String getName() {
+		return name;
+	}
 }
